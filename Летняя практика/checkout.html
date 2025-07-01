@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оформление заказа — GamerStore</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron:700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+  <style>
+    body {
+      background: #0F0F12;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    html, body {
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0 24px 0;
+      gap: 24px;
+      flex-wrap: nowrap;
+      border: 2px solid #FF00E5;
+      box-shadow: 0 0 16px #FF00E5, 0 0 32px #FF00E5 inset;
+    }
+    .logo {
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 2rem;
+      color: #00A3FF;
+      letter-spacing: 2px;
+      flex-shrink: 0;
+    }
+    .logo a {
+      color: #00A3FF;
+      text-decoration: none;
+    }
+    nav.menu {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+    }
+    nav.menu a {
+      color: #00A3FF;
+      text-decoration: none;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    nav.menu a:hover {
+      background: #18181c;
+      border: 2px solid #00A3FF;
+    }
+    .search {
+      flex: 1;
+      min-width: 200px;
+      margin: 0 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: none;
+      background: #18181c;
+      color: #fff;
+      font-size: 1rem;
+    }
+    .header-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .neon-btn-primary {
+      background: #00A3FF;
+      color: #fff;
+      border: 2px solid #00A3FF;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 8px #00A3FF, 0 0 16px #FF00E5 inset;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .neon-btn-primary:hover {
+      background: #0088dd;
+      box-shadow: 0 0 16px #00A3FF, 0 0 32px #FF00E5;
+    }
+    .neon-btn-secondary {
+      background: transparent;
+      color: #00A3FF;
+      border: 2px solid #00A3FF;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 8px #00A3FF;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .neon-btn-secondary:hover {
+      background: #18181c;
+      box-shadow: 0 0 16px #00A3FF;
+    }
+    h1 {
+      font-family: 'Orbitron', Arial, sans-serif;
+      color: #00A3FF;
+      text-align: center;
+    }
+    .checkout-form {
+      background: #18181c;
+      border: 1px solid #00a3ff88;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 0 24px #00a3ff55;
+      margin-top: 24px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .checkout-form h2 {
+      font-family: 'Orbitron', Arial, sans-serif;
+      color: #00A3FF;
+      margin-top: 0;
+    }
+    .checkout-form label {
+      display: block;
+      margin-bottom: 16px;
+    }
+    .checkout-form input, .checkout-form textarea {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid #333;
+      background: #222;
+      color: #fff;
+      margin-top: 8px;
+      box-sizing: border-box;
+    }
+    .checkout-form textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    .form-actions {
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+    }
+    .footer {
+      padding: 32px 0;
+      text-align: center;
+      color: #B0B0B0;
+      font-size: 1rem;
+      border-top: 1px solid #222;
+      margin-top: 48px;
+    }
+    /* --- RESPONSIVE STYLES --- */
+    @media (max-width: 1024px) {
+      .header {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+      .search {
+        flex-basis: 100%;
+        margin: 0;
+        order: 3;
+      }
+      .logo {
+        flex-basis: 100%;
+        text-align: center;
+        order: 0;
+      }
+      nav.menu { order: 1; }
+      .header-actions { order: 2; }
+    
+      .catalog-layout, .cart-layout { flex-direction: column; }
+      .filters, .cart-summary { max-width: 100%; width: 100%; }
+      .product-details { grid-template-columns: 1fr; }
+      .content-grid { grid-template-columns: 1fr; }
+    }
+    
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      h1 { font-size: 2rem; }
+      .header { flex-direction: column; padding: 24px 0; }
+      .logo { margin-bottom: 0; }
+      nav.menu {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        margin: 16px 0;
+        order: 1;
+        justify-content: flex-start;
+      }
+      nav.menu a { width: 100%; box-sizing: border-box; text-align: center; }
+      .search { min-width: unset; width: 100%; order: 2; margin: 0; }
+      .header-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        order: 3;
+        margin-top: 16px;
+      }
+      .header-actions .neon-btn-primary,
+      .header-actions .neon-btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero { padding: 40px 20px; }
+      .product-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+      .cart-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .cart-item-info { margin: 16px 0; }
+      .account-container .actions { flex-direction: column; }
+    
+      /* Responsive Table */
+      .admin-table thead { display: none; }
+      .admin-table, .admin-table tbody, .admin-table tr, .admin-table td {
+        display: block;
+        width: 100%;
+      }
+      .admin-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 8px;
+      }
+      .admin-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-bottom: none;
+      }
+      .admin-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 8px;
+        width: calc(50% - 16px);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        font-family: 'Orbitron', Arial, sans-serif;
+        color: #00A3FF;
+      }
+    }
+    
+    @media (max-width: 480px) {
+        .product-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo"><a href="index.html">CYBERZONE</a></div>
+      <nav class="menu">
+        <a href="catalog.html">Каталог</a>
+        <a href="about.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <input class="search" type="text" placeholder="Поиск по сайту...">
+      <div class="header-actions">
+        <a href="admin.html" class="neon-btn-secondary">Админ</a>
+        <a href="cart.html" class="neon-btn-primary">Корзина</a>
+        <a href="account.html" class="neon-btn-secondary">Профиль</a>
+      </div>
+    </header>
+    <main>
+    <h1>Оформление заказа</h1>
+      <div class="checkout-form">
+        <h2>Детали заказа</h2>
+        <form>
+          <label>Имя<input type="text" name="name" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Телефон<input type="tel" name="phone" required></label>
+          <label>Адрес доставки<input type="text" name="address" required></label>
+          <label>Комментарий к заказу<textarea name="comment"></textarea></label>
+          <div class="form-actions">
+            <button type="submit" class="neon-btn-primary">Подтвердить заказ</button>
+      </div>
+    </form>
+      </div>
+    </main>
+    <footer class="footer">© 2024 CYBERZONE. Все права защищены.</footer>
+  </div>
+  <script>
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      let valid = true;
+      form.querySelectorAll('input[required], textarea[required]').forEach(input => {
+        if (!input.value.trim()) {
+          input.style.border = '2px solid red';
+          valid = false;
+        } else {
+          input.style.border = '';
+        }
+      });
+      if (!valid) {
+        e.preventDefault();
+        alert('Пожалуйста, заполните все обязательные поля!');
+      }
+    });
+  }
+  </script>
+</body>
+</html> 

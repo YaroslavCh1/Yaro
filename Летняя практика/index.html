@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerStore — Магазин для геймеров</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron:700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+  <style>
+    html, body {
+      overflow-x: hidden;
+    }
+    body {
+      background: #0F0F12;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+    }
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0 24px 0;
+      gap: 24px;
+      flex-wrap: nowrap;
+      border: 2px solid #FF00E5;
+      box-shadow: 0 0 16px #FF00E5, 0 0 32px #FF00E5 inset;
+    }
+    .logo {
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 2rem;
+      color: #00A3FF;
+      letter-spacing: 2px;
+      flex-shrink: 0;
+    }
+    .logo a {
+      color: #00A3FF;
+      text-decoration: none;
+    }
+    nav.menu {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+    }
+    nav.menu a {
+      color: #00A3FF;
+      text-decoration: none;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 1rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    nav.menu a:hover {
+      background: #18181c;
+      border: 2px solid #00A3FF;
+    }
+    .search {
+      flex: 1;
+      min-width: 200px;
+      margin: 0 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: none;
+      background: #18181c;
+      color: #fff;
+      font-size: 1rem;
+    }
+    .header-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .neon-btn-primary {
+      background: #00A3FF;
+      color: #fff;
+      border: 2px solid #00A3FF;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 8px #00A3FF, 0 0 16px #FF00E5 inset;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .neon-btn-primary:hover {
+      background: #0088dd;
+      box-shadow: 0 0 16px #00A3FF, 0 0 32px #FF00E5;
+    }
+    .neon-btn-secondary {
+      background: transparent;
+      color: #00A3FF;
+      border: 2px solid #00A3FF;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 8px #00A3FF;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+    .neon-btn-secondary:hover {
+      background: #18181c;
+      box-shadow: 0 0 16px #00A3FF;
+    }
+    .main-content {
+      margin-top: 24px;
+    }
+    .hero {
+      background: radial-gradient(ellipse at center, #1a2a45, #0f0f12);
+      border: 2px solid #00A3FF;
+      border-radius: 16px;
+      padding: 60px 40px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 0 16px #00A3FF, inset 0 0 16px #00A3FF;
+      margin-bottom: 48px;
+    }
+    .hero h1 {
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-size: 2.5rem;
+      margin: 0 0 16px 0;
+      text-shadow: 0 0 10px #00A3FF, 0 0 20px #00A3FF;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      text-shadow: 0 0 5px #00A3FF;
+    }
+    .featured-products {
+      background: #18181c;
+      border: 1px solid #00a3ff88;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 0 24px #00a3ff55;
+    }
+    .featured-products h2 {
+      font-family: 'Orbitron', Arial, sans-serif;
+      color: #00A3FF;
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 32px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 24px;
+    }
+    .product-card {
+      background: #18181c;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 0 12px #00A3FF22;
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .product-card h3 {
+      font-family: 'Orbitron', Arial, sans-serif;
+      color: #00A3FF;
+    }
+    .product-card p {
+      margin: 0 0 16px 0;
+      font-size: 1.2rem;
+    }
+    .product-card-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      width: 100%;
+      margin-top: 12px;
+    }
+    .product-card-actions .neon-btn-primary,
+    .product-card-actions .neon-btn-secondary {
+      flex: 1 1 0;
+      min-width: 0;
+      font-size: 1.08rem;
+      padding: 14px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 16px #00A3FF55, 0 0 32px #FF00E555 inset;
+      transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.1s;
+    }
+    .product-card-actions .neon-btn-primary:active,
+    .product-card-actions .neon-btn-secondary:active {
+      transform: scale(0.97);
+      box-shadow: 0 0 24px #00A3FF, 0 0 48px #FF00E5;
+    }
+    @media (max-width: 600px) {
+      .product-card-actions {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .product-card-actions .neon-btn-primary,
+      .product-card-actions .neon-btn-secondary {
+        width: 100%;
+        font-size: 1.1rem;
+      }
+    }
+    .footer {
+      padding: 32px 0;
+      text-align: center;
+      color: #B0B0B0;
+      font-size: 1rem;
+      border-top: 1px solid #222;
+      margin-top: 48px;
+    }
+    @media (max-width: 768px) {
+      nav.menu {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        margin: 16px 0;
+        order: 1;
+        justify-content: flex-start;
+      }
+      nav.menu a { width: 100%; box-sizing: border-box; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo"><a href="index.html">CYBERZONE</a></div>
+      <nav class="menu">
+        <a href="catalog.html">Каталог</a>
+        <a href="about.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <input class="search" type="text" placeholder="Поиск по сайту...">
+      <div class="header-actions">
+        <a href="admin.html" class="neon-btn-secondary">Админ</a>
+        <a href="cart.html" class="neon-btn-primary">Корзина</a>
+        <a href="account.html" class="neon-btn-secondary">Профиль</a>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="hero">
+        <h1>Будущее игр уже здесь</h1>
+        <p>Откройте для себя новейшее игровое оборудование и аксессуары</p>
+        <a href="catalog.html" class="neon-btn-primary">Исследовать каталог</a>
+      </div>
+      <div class="featured-products">
+        <h2>Популярные товары</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <img src="https://cdn1.ozone.ru/s3/multimedia-j/6367202539.jpg" alt="Игровая гарнитура">
+            <h3>Игровая гарнитура</h3>
+            <p>5 990 ₽</p>
+            <div class="product-card-actions">
+                <a href="product.html" class="neon-btn-secondary">Подробнее</a>
+                <a href="#" class="neon-btn-primary">В корзину</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="https://avatars.mds.yandex.net/get-mpic/4267432/img_id6628476501902279387.jpeg/orig" alt="Игровая мышь">
+            <h3>Игровая мышь</h3>
+            <p>3 490 ₽</p>
+            <div class="product-card-actions">
+                <a href="product.html" class="neon-btn-secondary">Подробнее</a>
+                <a href="#" class="neon-btn-primary">В корзину</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="https://avatars.mds.yandex.net/get-marketpic/1578864/picec64b3d567002bf284097669ec524644/orig" alt="Игровая клавиатура">
+            <h3>Игровая клавиатура</h3>
+            <p>7 990 ₽</p>
+            <div class="product-card-actions">
+                <a href="product.html" class="neon-btn-secondary">Подробнее</a>
+                <a href="#" class="neon-btn-primary">В корзину</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="https://www.displayninja.com/wp-content/uploads/2020/10/Dell-Alienware-AW3418DW-Review-1200x900.jpg" alt="Игровой монитор">
+            <h3>Игровой монитор</h3>
+            <p>25 990 ₽</p>
+            <div class="product-card-actions">
+                <a href="product.html" class="neon-btn-secondary">Подробнее</a>
+                <a href="#" class="neon-btn-primary">В корзину</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="https://i.pinimg.com/originals/d4/a3/81/d4a3813b27b8443afdb968d19322879d.jpg" alt="Игровое кресло">
+            <h3>Игровое кресло</h3>
+            <p>15 990 ₽</p>
+            <div class="product-card-actions">
+                <a href="product.html" class="neon-btn-secondary">Подробнее</a>
+                <a href="#" class="neon-btn-primary">В корзину</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <img src="https://static.nix.ru/art/pic/web_news/2024/feb/pb1709108934.jpg" alt="Видеокарта RTX 4080">
+            <h3>Видеокарта RTX 4080</h3>
+            <p>25 990 ₽</p>
+            <div class="product-card-actions">
+                <a href="product.html" class="neon-btn-secondary">Подробнее</a>
+                <a href="#" class="neon-btn-primary">В корзину</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">© 2024 CYBERZONE. Все права защищены.</footer>
+  </div>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const heroTitle = document.querySelector('.hero h1');
+    if (heroTitle) {
+      heroTitle.style.opacity = 0;
+      heroTitle.style.transform = 'translateY(40px)';
+      setTimeout(() => {
+        heroTitle.style.transition = 'all 1s cubic-bezier(.4,2,.3,1)';
+        heroTitle.style.opacity = 1;
+        heroTitle.style.transform = 'translateY(0)';
+      }, 200);
+    }
+  });
+  </script>
+</body>
+</html> 
